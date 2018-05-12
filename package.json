@@ -1,0 +1,12 @@
+{
+  "name": "TicTacToe-Server",
+  "version": "0.0.1",
+  "scripts": {
+    "client": "nodemon start",
+    "server": "nodemon ./server/server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {}
+}
