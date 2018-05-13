@@ -12,15 +12,15 @@ Setup Oauth App in Slack: https://api.slack.com/tutorials/app-creation-and-oauth
 How to build TickTacToe - Algo: https://medium.com/@ojusmilindsave/tutorial-to-implement-tic-tac-toe-in-java-ad639661a9b 
 
 
-JSON - Messages
-
+JSON - Display in Slack
+```json
 {
     "text": "Would you like to play a game?",
     "attachments": [
         {
-            "text": "Let's start playing ticktactoe",
+            "text": "Let's Play TicTacToe",
             "fallback": "You are unable to choose a game",
-            "callback_id": "ttt_game",
+            "callback_id": "wopr_game",
             "color": "#3AA3E3",
             "attachment_type": "default",
             "actions": [
@@ -47,7 +47,7 @@ JSON - Messages
 		{
             "text": "",
             "fallback": "You are unable to choose a game",
-            "callback_id": "ttt_game",
+            "callback_id": "wopr_game",
             "color": "#3AA3E3",
             "attachment_type": "default",
             "actions": [
@@ -59,13 +59,13 @@ JSON - Messages
                 },
                 {
                     "name": "game",
-                    "text": "zero-one",
+                    "text": "one-one",
                     "type": "button",
                     "value": "one-one"
                 },
                 {
                     "name": "game",
-                    "text": "zero-two",
+                    "text": "one-two",
                     "type": "button",
                     "value": "one-two"
                 }
@@ -74,7 +74,7 @@ JSON - Messages
 		{
             "text": "",
             "fallback": "You are unable to choose a game",
-            "callback_id": "ttt_game",
+            "callback_id": "wopr_game",
             "color": "#3AA3E3",
             "attachment_type": "default",
             "actions": [
@@ -92,12 +92,13 @@ JSON - Messages
                 },
                 {
                     "name": "game",
-                    "text": "zero-two",
+                    "text": "two-two",
                     "type": "button",
                     "value": "two-two"
                 }
             ]
         }
     ]
-   ` 
 }
+````
+![alt text](./SlackGameView.png)
