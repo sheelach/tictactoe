@@ -77,12 +77,13 @@ async function winner(changePlayer){
 const tictactoe = async function(gameStart,slot){
     if (gameStart){
         await populateBoard()
+        console.log('Player X will start first')
         return
     }
     await printBoard()
-    console.log('Player X will start first')
+
     let count = 0
-        await printBoard()
+        //await printBoard()
         if (count === 9){
             console.log('Game is a draw. GoodBye !!!')
         }
@@ -93,6 +94,11 @@ const tictactoe = async function(gameStart,slot){
         if (ch[slot] === '-') {
             ch[slot] = currentPlayer
             await printBoard()
+        }else if((ch[slot]==='X') ||(ch[slot]==='O'))
+        {
+            //To avoid same player's switch already occupied slots
+            console.log('Slot already taken please choose next other number');
+            return
         }
 
         if (await winner()){
