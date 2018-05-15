@@ -33,8 +33,7 @@ app.get('/api/zero-zero', (req, res) => {
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 //function display board
-function TTTBoard()
-{
+function printBoard(){
 	console.log("  ----- ");
 	console.log(" |"+squares[0]+"|"+squares[1]+"|"+squares[2]+"|");
 	console.log(" -------");
@@ -45,56 +44,37 @@ function TTTBoard()
 
 }
 // check who gets turn to play
-function changePlayer()
-{
-	if(currentPlayer =='X')
-	{
+function switchPlayer(){
+	if(currentPlayer =='X'){
 		currentPlayer = 'O';
-	}
-	else{
+	}else{
 		currentPlayer = 'X';
 	}
-
 }
 
 //Check for winning rows,columns and diagnols
-
-function winner(changePlayer)
-{
+function winner(changePlayer){
     //check for rows
-    if(((squares[0]=='X')&&(squares[1]=='X')&&(squares[2]=='X')) ||((squares[0]=='O')&&(squares[1]=='O')&&(squares[2]=='O')))
-    {
-    console.log("Player "+currentPlayer+"  won the match");
-    }
-    else if(((squares[3]=='X')&&(squares[4]=='X')&&(squares[5]=='X')) ||((squares[3]=='O')&&(squares[4]=='O')&&(squares[5]=='O')))
-         {
-             console.log("Player "+currentPlayer+"  won the match");
-         }
-    else if(((squares[6]=='X')&&(squares[7]=='X')&&(squares[8]=='X')) ||((squares[6]=='O')&&(squares[7]=='O')&&(squares[8]=='O')))
-         {
-             console.log("Player "+currentPlayer+"  won the match");
-         }
-    // check for columns
-        if(((squares[0]=='X')&&(squares[3]=='X')&&(squares[6]=='X')) ||((squares[0]=='O')&&(squares[3]=='O')&&(squares[6]=='O')))
-        {
+    if(((squares[0]=='X')&&(squares[1]=='X')&&(squares[2]=='X')) ||((squares[0]=='O')&&(squares[1]=='O')&&(squares[2]=='O'))){
         console.log("Player "+currentPlayer+"  won the match");
-        }
-        else if(((squares[1]=='X')&&(squares[4]=='X')&&(squares[7]=='X')) ||((squares[1]=='O')&&(squares[4]=='O')&&(squares[7]=='O')))
-             {
-                 console.log("Player "+currentPlayer+"  won the match");
-             }
-        else if(((squares[2]=='X')&&(squares[5]=='X')&&(squares[8]=='X')) ||((squares[2]=='O')&&(squares[5]=='O')&&(squares[8]=='O')))
-             {
-                 console.log("Player "+currentPlayer+"  won the match");
-             }
-        //check for diagnols
-        if(((squares[0]=='X')&&(squares[4]=='X')&&(squares[8]=='X')) ||((squares[0]=='O')&&(squares[4]=='O')&&(squares[8]=='O')))
-             {
-                console.log("Player "+currentPlayer+"  won the match");
-             }
-        else if(((squares[2]=='X')&&(squares[4]=='X')&&(squares[6]=='X')) ||((squares[2]=='O')&&(squares[4]=='O')&&(squares[6]=='O')))
-             {
-                         console.log("Player "+currentPlayer+"  won the match");
-             }
+    }else if(((squares[3]=='X')&&(squares[4]=='X')&&(squares[5]=='X')) ||((squares[3]=='O')&&(squares[4]=='O')&&(squares[5]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }else if(((squares[6]=='X')&&(squares[7]=='X')&&(squares[8]=='X')) ||((squares[6]=='O')&&(squares[7]=='O')&&(squares[8]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }
+    // check for columns
+    if(((squares[0]=='X')&&(squares[3]=='X')&&(squares[6]=='X')) ||((squares[0]=='O')&&(squares[3]=='O')&&(squares[6]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }else if(((squares[1]=='X')&&(squares[4]=='X')&&(squares[7]=='X')) ||((squares[1]=='O')&&(squares[4]=='O')&&(squares[7]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }else if(((squares[2]=='X')&&(squares[5]=='X')&&(squares[8]=='X')) ||((squares[2]=='O')&&(squares[5]=='O')&&(squares[8]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }
+    //check for diagnols
+    if(((squares[0]=='X')&&(squares[4]=='X')&&(squares[8]=='X')) ||((squares[0]=='O')&&(squares[4]=='O')&&(squares[8]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }else if(((squares[2]=='X')&&(squares[4]=='X')&&(squares[6]=='X')) ||((squares[2]=='O')&&(squares[4]=='O')&&(squares[6]=='O'))){
+        console.log("Player "+currentPlayer+"  won the match");
+    }
 }
 
