@@ -74,7 +74,6 @@ function winner(changePlayer)
          {
              console.log("Player "+currentPlayer+"  won the match");
          }
-
     // check for columns
         if(((squares[0]=='X')&&(squares[3]=='X')&&(squares[6]=='X')) ||((squares[0]=='O')&&(squares[3]=='O')&&(squares[6]=='O')))
         {
@@ -88,8 +87,14 @@ function winner(changePlayer)
              {
                  console.log("Player "+currentPlayer+"  won the match");
              }
-
-
-
+        //check for diagnols
+        if(((squares[0]=='X')&&(squares[4]=='X')&&(squares[8]=='X')) ||((squares[0]=='O')&&(squares[4]=='O')&&(squares[8]=='O')))
+             {
+                console.log("Player "+currentPlayer+"  won the match");
+             }
+        else if(((squares[2]=='X')&&(squares[4]=='X')&&(squares[6]=='X')) ||((squares[2]=='O')&&(squares[4]=='O')&&(squares[6]=='O')))
+             {
+                         console.log("Player "+currentPlayer+"  won the match");
+             }
 }
 
