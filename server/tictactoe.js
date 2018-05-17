@@ -80,10 +80,10 @@ const tictactoe = async function(gameStart,slot){
         console.log('Player X will start first')
         return
     }
-    await printBoard()
+    //await printBoard()
 
     let count = 0
-        //await printBoard()
+        await printBoard()
         if (count === 9){
             console.log('Game is a draw. GoodBye !!!')
         }

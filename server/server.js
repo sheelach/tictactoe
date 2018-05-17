@@ -9,10 +9,17 @@ const port = process.env.PORT || 5000;
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+//app.set('views',__dirname + '/views');
+//app.engine('html', require('ejs').renderFile);
+//app.set('view engine', 'html');
+
 app.get('/api/start', (req, res) => {
   ticktactoe(true, 0)
   res.send({ express: 'Start Game' });
 });
+
+//on click should update button value to X or O with Post 5/16/2015 checking for Post update functionality
+
 app.get('/api/zero', (req, res) => {
    ticktactoe(false, 0).then((data) => {
        if (data){
@@ -94,6 +101,9 @@ app.get('/api/eight', (req, res) => {
        }
    })
 });
+
+//============================05/16/2018 Sheela Chennamaneni
+//Creating a index.html page to display squares on a web page and click must update the slot at backend
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
