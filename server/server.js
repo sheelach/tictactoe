@@ -16,24 +16,211 @@ app.get('/api/start', (req, res) => {
     express: 'Start Game'
   });
 });
+
+/// Adding a new variable to display initial values and reload when default values when game restarts and read from post request
+const msgTable = {
+                     "text": "> Let's play a game of *TicTacToe* :smile:",
+                     "attachments": [{
+                       "text": "Start by selecting a box!",
+                       "fallback": "You are unable to choose a game",
+                       "callback_id": "wopr_game",
+                       "color": "#3AA3E3",
+                       "attachment_type": "default",
+                       "actions": [{
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "1"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "2"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "3"
+                       }]
+                     }, {
+                       "text": "",
+                       "fallback": "You are unable to choose a game",
+                       "callback_id": "wopr_game",
+                       "color": "#3AA3E3",
+                       "attachment_type": "default",
+                       "actions": [{
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "4"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "5"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "6"
+                       }]
+                     }, {
+                       "text": "",
+                       "fallback": "You are unable to choose a game",
+                       "callback_id": "wopr_game",
+                       "color": "#3AA3E3",
+                       "attachment_type": "default",
+                       "actions": [{
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "7"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "8"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "9"
+                       }]
+                     }]
+                   }
+//Refresh data with default data using copy variable
+const msgTableOrig = {
+                     "text": "> Let's play a game of *TicTacToe* :smile:",
+                     "attachments": [{
+                       "text": "Start by selecting a box!",
+                       "fallback": "You are unable to choose a game",
+                       "callback_id": "wopr_game",
+                       "color": "#3AA3E3",
+                       "attachment_type": "default",
+                       "actions": [{
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "1"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "2"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "3"
+                       }]
+                     }, {
+                       "text": "",
+                       "fallback": "You are unable to choose a game",
+                       "callback_id": "wopr_game",
+                       "color": "#3AA3E3",
+                       "attachment_type": "default",
+                       "actions": [{
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "4"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "5"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "6"
+                       }]
+                     }, {
+                       "text": "",
+                       "fallback": "You are unable to choose a game",
+                       "callback_id": "wopr_game",
+                       "color": "#3AA3E3",
+                       "attachment_type": "default",
+                       "actions": [{
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "7"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "8"
+                       }, {
+                         "name": "game",
+                         "text": "-",
+                         "type": "button",
+                         "value": "9"
+                       }]
+                     }]
+                   }
+
+//function to update
+function sendChatUpdate(responseURL,slot){
+    msgTable.attachments[0].actions[0].text = 'A'
+    const postOptions={
+    uri:responseURL,
+    method:'POST',
+    headers:{
+        'content-type':'application/json'
+        },
+        json:msgTable
+        }
+    request(postOptions,(error,response,body)=>{
+    if(error){
+    console.error('Received an error: ',error)
+    }
+    })
+    }
+
+function sendMessageToSlackResponseURL(responseURL,JSONMessage){
+    var postOptions={
+        uri:responseURL,
+        method:'POST',
+        headers:{
+            'content-type':'application/json'
+            },
+            json:msgTable
+            }
+            request(postOptions,(error,response,body)=>{
+                if(error){
+                console.error('Received an error: ',error)
+                }
+                })
+ }
+
 app.post('/api/actions', (req, res) => {
   const payload = JSON.parse(req.body.payload)
   const slot = payload.actions[0].value
   console.log(slot)
-  res.send({
-    "replace_original": false,
-    "delete_original": false,
-    "response_type": "in_channel",
-    "text": slot
-  });
-});
+  const message = {
+  "replace_original": false,
+  "text":payload.user.name+' : '+slot
+  }
+  const winMessage ={
+  "replace_original": false,
+      "delete_original": false,
+      "response_type": "ephemeral",
+      "text": slot
+      }
+      res.status(200).end()
+      sendChatUpdate(responseURL,slot)
+      sendMessageToSlackResponseURL(responseURL,message)
+      })
+
 app.post('/api/start', (req, res) => {
   ticktactoe(true, 0)
-  res.send(
-  {
+  res.send(msgTableOrig)
+  })
+ /* {
     "text": "> Let's play a game of *TicTacToe* :smile:",
     "attachments": [{
-      "text": "Start by selecting a a box!",
+      "text": "Start by selecting a box!",
       "fallback": "You are unable to choose a game",
       "callback_id": "wopr_game",
       "color": "#3AA3E3",
@@ -101,7 +288,7 @@ app.post('/api/start', (req, res) => {
     }]
   }
   )
-})
+})*/
 
 //on click should update button value to X or O with Post 5/16/2015 checking for Post update functionality
 

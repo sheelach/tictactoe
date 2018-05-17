@@ -17,7 +17,7 @@ JSON - Display in Slack
   {
     "text": "> Let's play a game of *TicTacToe* :smile:",
     "attachments": [{
-      "text": "Start by selecting a a box!",
+      "text": "Start by selecting a box!",
       "fallback": "You are unable to choose a game",
       "callback_id": "wopr_game",
       "color": "#3AA3E3",
