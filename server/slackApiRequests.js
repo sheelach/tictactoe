@@ -1,5 +1,8 @@
 const request = require('request')
 
+/**
+@function updates the board on Slack based on player moves
+*/
 async function sendChatUpdate (responseURL, message, currentPlayer, slot) {
   if (slot === '1' || '2' || '3') {
     for (let i = 0; i < 3; i++) {
@@ -42,7 +45,9 @@ async function sendChatUpdate (responseURL, message, currentPlayer, slot) {
     }
   })
 }
-
+/**
+@function sends the success/failure/current status to Slack users
+*/
 async function sendMessageToSlackResponseURL (responseURL, winMessage) {
   var postOptions = {
     uri: responseURL,
@@ -58,6 +63,9 @@ async function sendMessageToSlackResponseURL (responseURL, winMessage) {
     }
   })
 }
+/** This function resets the POST msg button definitions.
+TODO: Used ES6 class to create new copy of the content, but Slack seems to retain the board status. Debug further!
+*/
 async function resetMessage (message) {
   for (let i = 0; i < 3; i++) {
     message.attachments[0].actions[i].text = '-'

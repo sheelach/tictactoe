@@ -9,16 +9,18 @@ How to build TickTacToe - Algo: https://medium.com/@ojusmilindsave/tutorial-to-i
 
 <b>Instructions:</b><br>
     - Invite a user to play in the slack channel by command (/ttt start )
+    - Select the slot from the board by Player X
+    - Select the open slot from the board by Player O
+    - On a WIN or a Draw, type the command ```/ttt start @username ```
 
 * Prerequisites:
-    - Node running local with tunnel (ngrok) OR Cloud runtime (AWS/Heroku/GCloud)
-    - Slack Account with Channel/Workspace
+    - Node running local with tunnel (ngrok) OR Cloud runtime (AWS/Heroku/GCloud). This sample is deployed on Heroku.com free tier (https://glacial-shelf-17203.herokuapp.com)
+    - Slack Account with access to a Channel
     - 2-players (Play with Slackbot OR Self :)
 
-* TODO: 
+* TODO:
     - Test Cases updates
     - Test coverage report
-    - Instruction Documentation for Play
 
 <b>Intial Screen:</b> <br>
 ![alt text](./SlackGameView.png)

@@ -1,16 +1,15 @@
-const ch = []
+const ch = [] // Array holding the state of the board
 let currentPlayer = 'X'
-let count
+let count // Checking if we ran out of slots on the play board
 
 async function populateBoard () {
-    // Initialize the Board with place '-''s
   console.log('>>> Started the game TicTackToe!!!')
   count = 0
   for (let i = 0; i < 9; i++) {
     ch[i] = '-'
   }
 }
-// function display board
+
 async function printBoard () {
   console.log('  ----- ')
   console.log(' |' + ch[0] + '|' + ch[1] + '|' + ch[2] + '|')
@@ -20,6 +19,7 @@ async function printBoard () {
   console.log(' |' + ch[6] + '|' + ch[7] + '|' + ch[8] + '|')
   console.log(' -------')
 }
+
 // check who gets turn to play
 const switchPlayer = async function switchPlayer () {
   console.log('Current Player: ', currentPlayer)
@@ -33,7 +33,8 @@ const switchPlayer = async function switchPlayer () {
 
 // Check for winning rows,columns and diagnols
 const winner = async function winner (changePlayer) {
-    // check for column's
+  //TODO: The blocks below can be merged as shown by Solarlint. Work on it when you have time
+  // check for column's
   if ((ch[0] === 'X') && (ch[1] === 'X') && (ch[2] === 'X') || (ch[0] === 'O') && (ch[1] === 'O') && (ch[2] === 'O')) {
     console.log('Player ' + currentPlayer + '  won the match')
     await printBoard()
@@ -47,7 +48,7 @@ const winner = async function winner (changePlayer) {
     await printBoard()
     return true
   }
-    // check for diagnols
+  // check for diagnols
   if ((ch[0] === 'X') && (ch[4] === 'X') && (ch[8] === 'X') || (ch[0] === 'O') && (ch[4] === 'O') && (ch[8] === 'O')) {
     console.log('Player ' + currentPlayer + '  won the match')
     await printBoard()
@@ -62,7 +63,7 @@ const winner = async function winner (changePlayer) {
     return true
   }
 
-    // check for 0,3,6
+  // check for 0,3,6
   if ((ch[0] === 'X') && (ch[3] === 'X') && (ch[6] === 'X') || (ch[0] === 'O') && (ch[3] === 'O') && (ch[6] === 'O')) {
     console.log('Player ' + currentPlayer + '  won the match')
     await printBoard()
@@ -78,7 +79,7 @@ const winner = async function winner (changePlayer) {
   }
   count++
 }
-
+//Main function that executes the game
 const tictactoe = async function (gameStart, slot) {
   if (gameStart) {
     await populateBoard()
@@ -107,7 +108,7 @@ const tictactoe = async function (gameStart, slot) {
     console.log('currentPlayer: ', currentPlayer)
     console.log('player: ', player)
     await switchPlayer()
-    return {winStatus: false, msg: currentPlayer+ ', Its your turn now!', user: player}
+    return {winStatus: false, msg: currentPlayer, user: player}
   }
 }
 
