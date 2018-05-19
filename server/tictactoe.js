@@ -4,7 +4,7 @@ let count
 
 async function populateBoard () {
     // Initialize the Board with place '-''s
-  console.log('>>> Started the game tictacktoe!!!')
+  console.log('>>> Started the game TicTackToe!!!')
   count = 0
   for (let i = 0; i < 9; i++) {
     ch[i] = '-'
@@ -28,7 +28,7 @@ const switchPlayer = async function switchPlayer () {
   } else {
     currentPlayer = 'X'
   }
-  console.log('Swithed to Player now: ', currentPlayer)
+  console.log('Switched to Player now as: ', currentPlayer)
 }
 
 // Check for winning rows,columns and diagnols
@@ -82,7 +82,7 @@ const winner = async function winner (changePlayer) {
 const tictactoe = async function (gameStart, slot) {
   if (gameStart) {
     await populateBoard()
-    console.log('Player X will start first')
+    console.log('Player X will start first!')
     await printBoard()
     return
   }
@@ -91,23 +91,23 @@ const tictactoe = async function (gameStart, slot) {
     ch[slot - 1] = currentPlayer
     await printBoard()
   } else if ((ch[slot - 1] === 'X') || (ch[slot - 1] === 'O')) {
-    console.log('Slot already taken please choose next other number')
-    return {winStatus: false, msg: 'Slot already taken please choose next other number', user: currentPlayer}
+    console.log('Already taken. please choose other! ')
+    return {winStatus: false, msg: ' Already taken. please choose other!', user: currentPlayer}
   }
   if (await winner()) {
     console.log('Returning WIN!')
-    return {winStatus: true, msg: ' WiNNER!.  Start new game `/ttt start`', user: currentPlayer}
+    return {winStatus: true, msg: ' is the WINNER. Would you like to start a new game? type `/ttt start @username`', user: currentPlayer}
   } else {
     if (count === 9) {
       console.log('Game is a draw. GoodBye !!!')
-      return {winStatus: true, msg: 'Games is DRAW. Start new game `/ttt start`', user: currentPlayer}
+      return {winStatus: true, msg: ' Its a DRAW. Would you like to start a new game? type `/ttt start  @username`', user: currentPlayer}
     }
     console.log('No winner Yet!')
     const player = currentPlayer
     console.log('currentPlayer: ', currentPlayer)
     console.log('player: ', player)
     await switchPlayer()
-    return {winStatus: false, msg: 'Not a winner Yet!', user: player}
+    return {winStatus: false, msg: currentPlayer+ ', Its your turn now!', user: player}
   }
 }
 

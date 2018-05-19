@@ -26,7 +26,7 @@ app.post('/api/actions', (req, res) => {
         'replace_original': false,
         'delete_original': false,
         'response_type': 'in_channel',
-        'text': payload.channel.name + ' : ' + payload.user.name + ' : ' + data.user + ' : ' + data.msg
+        'text': 'Channel : '+payload.channel.name + ' User : ' + payload.user.name + ' marked ' + data.user + ' : ' + data.msg
       }
       sendChatUpdate(responseURL, msgTable, data.user, slot)
       sendMessageToSlackResponseURL(responseURL, winMessage)
@@ -35,7 +35,7 @@ app.post('/api/actions', (req, res) => {
         'replace_original': false,
         'delete_original': false,
         'response_type': 'in_channel',
-        'text': payload.channel.name + ' : ' + payload.user.name + ' : ' + data.user + ' : ' + data.msg
+        'text': 'Channel : '+payload.channel.name + ' User : ' + payload.user.name + ' marked ' + data.user + ' : ' + data.msg
       }
       sendChatUpdate(responseURL, msgTable, data.user, slot)
       sendMessageToSlackResponseURL(responseURL, message)
