@@ -1,12 +1,12 @@
 const msgTable =
   {
     'text': "> Let's play a game of *TicTacToe* :smile:",
+    'response_type': 'in_channel',
     'attachments': [{
       'text': 'Start by selecting a box!',
       'fallback': 'You are unable to choose a game',
       'callback_id': 'first_slot',
       'color': '#3AA3E3',
-      'response_type': 'in_channel',
       'attachment_type': 'default',
       'actions': [{
         'name': 'game',
