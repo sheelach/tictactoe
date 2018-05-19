@@ -6,7 +6,7 @@ let msgTable = require('./utils/bodyContent')
 const msgTableOrig = require('./utils/bodyContent')
 const sendChatUpdate = require('./slackApiRequests').sendChatUpdate
 const sendMessageToSlackResponseURL = require('./slackApiRequests').sendMessageToSlackResponseURL
-const resetMessage = require('./helper').resetMessage
+const resetMessage = require('./slackApiRequests').resetMessage
 const port = process.env.PORT || 5000
 
 const app = express()
