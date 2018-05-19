@@ -1,88 +1,21 @@
-# TicTacToe Game on Slack for Users #
+# TicTacToe Game App for Slackers #
 
-Simple Node Express Server listening on the events from Slack and running the game
+A Simple Node Express Server listening on the events from Slack and running the 2-player TickTacToe game
 
-<b>References:</b>
-
-Integrations:
-
+<b>Integration Reference Material:</b>
 Into Slack using Node documentation: https://api.slack.com/tutorials/intro-to-message-buttons
 Setup Oauth App in Slack: https://api.slack.com/tutorials/app-creation-and-oauth
- 
-How to build TickTacToe - Algo: https://medium.com/@ojusmilindsave/tutorial-to-implement-tic-tac-toe-in-java-ad639661a9b 
+How to build TickTacToe - Algo: https://medium.com/@ojusmilindsave/tutorial-to-implement-tic-tac-toe-in-java-ad639661a9b
 
+* Prerequisites:
 
-JSON - Display in Slack
-```json
-  {
-    "text": "> Let's play a game of *TicTacToe* :smile:",
-    "attachments": [{
-      "text": "Start by selecting a box!",
-      "fallback": "You are unable to choose a game",
-      "callback_id": "wopr_game",
-      "color": "#3AA3E3",
-      "attachment_type": "default",
-      "actions": [{
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "1"
-      }, {
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "2"
-      }, {
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "3"
-      }]
-    }, {
-      "text": "",
-      "fallback": "You are unable to choose a game",
-      "callback_id": "wopr_game",
-      "color": "#3AA3E3",
-      "attachment_type": "default",
-      "actions": [{
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "4"
-      }, {
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "5"
-      }, {
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "6"
-      }]
-    }, {
-      "text": "",
-      "fallback": "You are unable to choose a game",
-      "callback_id": "wopr_game",
-      "color": "#3AA3E3",
-      "attachment_type": "default",
-      "actions": [{
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "7"
-      }, {
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "8"
-      }, {
-        "name": "game",
-        "text": "-",
-        "type": "button",
-        "value": "9"
-      }]
-    }]
-  }
-````
+* HOW TO:
+
+* TODO:
+
+#Intial Screen:
 ![alt text](./SlackGameView.png)
+#Winner Screen:
+![alt text](./SlackGameWinner.png)
+#Draw Screen:
+![alt text](./SlackGameDraw.png)

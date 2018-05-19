@@ -1,14 +1,23 @@
 {
-  "name": "TicTacToe-Server",
+  "name": "Sheela-Chennamaneni",
   "version": "0.0.1",
+  "email": "sheelach@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sheelach/tictactoe.git"
+  },
   "scripts": {
+    "start": "nodemon ./server/server.js",
     "client": "nodemon start",
     "server": "nodemon ./server/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^5.0.1",
+    "eslint": "^4.19.1",
     "express": "^4.16.2",
+    "nodemon": "^1.17.4",
     "request": "^2.85.0"
   },
   "devDependencies": {

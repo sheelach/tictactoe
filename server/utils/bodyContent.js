@@ -11,16 +11,19 @@ const msgTable =
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '1'
       }, {
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '2'
       }, {
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '3'
       }]
     }, {
@@ -33,16 +36,19 @@ const msgTable =
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '4'
       }, {
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '5'
       }, {
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '6'
       }]
     }, {
@@ -55,18 +61,22 @@ const msgTable =
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '7'
       }, {
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '8'
       }, {
         'name': 'game',
         'text': '-',
         'type': 'button',
+        'style': 'primary',
         'value': '9'
       }]
     }]
   }
+
 module.exports = msgTable
