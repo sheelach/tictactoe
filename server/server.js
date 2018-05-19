@@ -33,6 +33,8 @@ app.post('/api/actions', (req, res) => {
     } else {
       const message = {
         'replace_original': false,
+        'delete_original': false,
+        'response_type': 'in_channel',
         'text': payload.channel.name + ' : ' + payload.user.name + ' : ' + data.user + ' : ' + data.msg
       }
       sendChatUpdate(responseURL, msgTable, data.user, slot)
