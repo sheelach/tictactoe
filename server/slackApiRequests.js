@@ -61,15 +61,15 @@ async function sendMessageToSlackResponseURL (responseURL, winMessage) {
 async function resetMessage (message) {
   for (let i = 0; i < 3; i++) {
     message.attachments[0].actions[i].text = '-'
-    message.attachments[0].actions[i].stype = 'primary'
+    message.attachments[0].actions[i].style = 'primary'
   }
   for (let j = 0; j < 3; j++) {
     message.attachments[1].actions[j].text = '-'
-    message.attachments[1].actions[i].stype = 'primary'
+    message.attachments[1].actions[j].style = 'primary'
   }
   for (let k = 0; k < 3; k++) {
     message.attachments[2].actions[k].text = '-'
-    message.attachments[2].actions[i].stype = 'primary'
+    message.attachments[2].actions[k].style = 'primary'
   }
 }
 
