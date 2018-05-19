@@ -8,14 +8,20 @@ Setup Oauth App in Slack: https://api.slack.com/tutorials/app-creation-and-oauth
 How to build TickTacToe - Algo: https://medium.com/@ojusmilindsave/tutorial-to-implement-tic-tac-toe-in-java-ad639661a9b
 
 * Prerequisites:
+    - Node running local with tunnel (ngrok) OR Cloud runtime (AWS/Heroku/GCloud)
+    - Slack Account with Channel/Workspace
+    - 2-players (Play with Slackbot OR Self :)
 
-* HOW TO:
+* TODO: 
+    - Test Cases updates
+    - Test coverage report
+    - Instruction Documentation for Play
 
-* TODO:
-
-#Intial Screen:
+<b>Intial Screen:</b> <br>
 ![alt text](./SlackGameView.png)
-#Winner Screen:
+
+<b>Winner Screen:</b> <br>
 ![alt text](./SlackGameWinner.png)
-#Draw Screen:
+
+<b>Draw Screen:</b> <br>
 ![alt text](./SlackGameDraw.png)
