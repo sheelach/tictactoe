@@ -1,6 +1,8 @@
 const msgTable =
   {
     'text': "> Let's play a game of *TicTacToe* :smile:",
+    'replace_original': true,
+    'delete_original': true,
     'response_type': 'in_channel',
     'attachments': [{
       'text': 'Start by selecting a box!',
