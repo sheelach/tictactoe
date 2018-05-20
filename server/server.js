@@ -27,23 +27,31 @@ app.post('/api/actions', (req, res) => {
   const slot = payload.actions[0].value
   const responseURL = payload.response_url
   res.status(200).end()
-  ticktactoe(false, slot).then((data) => {
+  ticktactoe(false, slot, payload.user.name).then((data) => {
     console.log('Tictactoe promise response DATA: ', data)
     if (data.winStatus) {
       const winMessage = {
         'replace_original': false,
         'delete_original': false,
         'response_type': 'in_channel',
-        'text': 'Channel : '+payload.channel.name + ' User : ' + payload.user.name + ' marked ' + data.user + ' : ' + data.msg
+        'text': 'Channel : '+payload.channel.name + ', User : ' + payload.user.name + ', Message: ' + data.msg
       }
       sendChatUpdate(responseURL, msgTable, data.user, slot)
       sendMessageToSlackResponseURL(responseURL, winMessage)
+    } else if (data.wait){
+      const message = {
+        'replace_original': false,
+        'delete_original': false,
+        'response_type': 'in_channel',
+        'text': 'Channel : '+payload.channel.name + ', User : ' + payload.user.name + ', Message: ' + data.msg
+      }
+      sendMessageToSlackResponseURL(responseURL, message)
     } else {
       const message = {
         'replace_original': false,
         'delete_original': false,
         'response_type': 'in_channel',
-        'text': 'Channel : '+payload.channel.name + ' User : ' + payload.user.name + ' marked ' + data.user + ' : ' + data.msg
+        'text': 'Channel : '+payload.channel.name + ', User : ' + payload.user.name + ', Message: ' + data.msg
       }
       sendChatUpdate(responseURL, msgTable, data.user, slot)
       sendMessageToSlackResponseURL(responseURL, message)

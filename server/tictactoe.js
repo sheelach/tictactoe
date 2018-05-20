@@ -1,10 +1,12 @@
 const ch = [] // Array holding the state of the board
 let currentPlayer = 'X'
+let currentSlackPlayer
 let count // Checking if we ran out of slots on the play board
 
 async function populateBoard () {
   console.log('>>> Started the game TicTackToe!!!')
   count = 0
+  currentSlackPlayer = undefined
   for (let i = 0; i < 9; i++) {
     ch[i] = '-'
   }
@@ -29,6 +31,18 @@ const switchPlayer = async function switchPlayer () {
     currentPlayer = 'X'
   }
   console.log('Switched to Player now as: ', currentPlayer)
+}
+
+const checkPlayer = async function(slackUserName)
+{
+    console.log('Incoming slackUserName: ', slackUserName)
+    console.log('Incoming currentSlackPlayer: ', currentSlackPlayer)
+    if (currentSlackPlayer && currentSlackPlayer === slackUserName) {
+        return true
+    } else {
+        currentSlackPlayer = slackUserName
+        return false
+    }
 }
 
 // Check for winning rows,columns and diagnols
@@ -80,7 +94,7 @@ const winner = async function winner (changePlayer) {
   count++
 }
 //Main function that executes the game
-const tictactoe = async function (gameStart, slot) {
+const tictactoe = async function (gameStart, slot, slackUserName) {
   if (gameStart) {
     await populateBoard()
     console.log('Player X will start first!')
@@ -88,28 +102,30 @@ const tictactoe = async function (gameStart, slot) {
     return
   }
   await printBoard()
+  if (await checkPlayer(slackUserName)){
+    return { wait: true, winStatus: false, msg: ' Please wait for other player to choose! ', user: currentPlayer}
+  }
   if (ch[slot - 1] === '-') {
     ch[slot - 1] = currentPlayer
     await printBoard()
   } else if ((ch[slot - 1] === 'X') || (ch[slot - 1] === 'O')) {
     console.log('Already taken. please choose other! ')
-    return {winStatus: false, msg: ' Already taken. please choose other!', user: currentPlayer}
+    return {wait: true, winStatus: false, msg: ' Already taken. please choose other!', user: currentPlayer}
   }
   if (await winner()) {
     console.log('Returning WIN!')
-    return {winStatus: true, msg: ' is the WINNER. Would you like to start a new game? type `/ttt start @username`', user: currentPlayer}
+    return {wait: false, winStatus: true, msg: ' is the WINNER. Would you like to start a new game? type `/ttt start @username`', user: currentPlayer}
   } else {
-    if (count === 9) {
-      console.log('Game is a draw. GoodBye !!!')
-      return {winStatus: true, msg: ' Its a DRAW. Would you like to start a new game? type `/ttt start  @username`', user: currentPlayer}
-    }
+        if (count === 9) {
+          console.log('Game is a draw. GoodBye !!!')
+          return {wait: false, winStatus: true, msg: ' Its a DRAW. Would you like to start a new game? type `/ttt start  @username`', user: currentPlayer}
+        }
     console.log('No winner Yet!')
     const player = currentPlayer
     console.log('currentPlayer: ', currentPlayer)
-    console.log('player: ', player)
     await switchPlayer()
-    return {winStatus: false, msg: currentPlayer, user: player}
-  }
+    return {wait: false, winStatus: false, msg: currentPlayer, user: player}
+}
 }
 
 module.exports = tictactoe
